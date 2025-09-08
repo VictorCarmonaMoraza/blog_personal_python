@@ -2,15 +2,16 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-#Static Route
+
 @app.route('/')
 def home():
-    return render_template('index.html', title='Bienvenido a mi sitio Web')
+    posts = [
+        {"id": 1, "title": "First Post", "content": "This is my first blog post."},
+        {"id": 2, "title": "Second Post", "content": "Another day, another post."},
+        {"id": 3, "title": "Third Post", "content": "Awesome Post"},
+    ]
+    return render_template('index.html', posts=posts)
 
-# Dynamic Route
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-    return f"Displaying Post #{post_id}"
 
 if __name__ == "__main__":
     app.run(debug=True)

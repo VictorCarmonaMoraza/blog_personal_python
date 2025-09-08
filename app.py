@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 #Static Route
-@app.route('/home')
+@app.route('/')
 def home():
-    return "Welcome to My Blog"
+    return render_template('index.html', title='Bienvenido a mi sitio Web')
 
 # Dynamic Route
 @app.route('/post/<int:post_id>')
